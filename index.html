@@ -220,6 +220,95 @@
             display: flex;
             gap: 10px;
         }
+        
+        /* Added styles for hashtag generator */
+        .hashtag-item {
+            display: inline-block;
+            background-color: #333;
+            padding: 6px 12px;
+            margin: 5px;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .hashtag-item:hover {
+            background-color: #00bcd4;
+        }
+        
+        .hashtags-container {
+            margin-top: 15px;
+        }
+        
+        /* Comment template styles */
+        .comment-templates {
+            max-height: 200px;
+            overflow-y: auto;
+            margin-top: 15px;
+            background-color: #333;
+            border-radius: 5px;
+            padding: 10px;
+        }
+        
+        .template-item {
+            padding: 10px;
+            border-bottom: 1px solid #444;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .template-item:hover {
+            background-color: #444;
+        }
+        
+        /* Chroma Key styles */
+        .chroma-preview {
+            width: 320px;
+            height: 180px;
+            background-color: #00ff00;
+            margin: 20px auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 4px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .preview-content {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: white;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+            background-size: cover;
+            background-position: center;
+        }
+        
+        /* Sound effect library */
+        .sound-library {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-top: 15px;
+        }
+        
+        .sound-effect {
+            background-color: #333;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            text-align: center;
+            transition: background-color 0.3s;
+        }
+        
+        .sound-effect:hover {
+            background-color: #444;
+        }
     </style>
 </head>
 <body>
@@ -245,7 +334,44 @@
         <section class="tools">
             <h2>🎬 YouTube Tools</h2>
             <p>Everything you need to create amazing YouTube content</p>
-            <!-- Tools will be added by JavaScript -->
+            
+            <!-- Added YouTube Hashtag Generator -->
+            <div class="tool-card">
+                <h3>YouTube Hashtag Generator</h3>
+                <div class="tool-description">Generate trending hashtags for your videos</div>
+                <div class="tool-input">
+                    <input type="text" id="video-topic" placeholder="Enter your video topic">
+                    <select id="video-category">
+                        <option value="gaming">Gaming</option>
+                        <option value="tech">Technology</option>
+                        <option value="beauty">Beauty & Lifestyle</option>
+                        <option value="cooking">Cooking & Food</option>
+                        <option value="education">Education</option>
+                    </select>
+                    <button id="generate-hashtags" class="action-btn">Generate Hashtags</button>
+                </div>
+                <div id="hashtags-result" class="hashtags-container"></div>
+            </div>
+            
+            <!-- Added YouTube Comment Template Generator -->
+            <div class="tool-card">
+                <h3>Comment Template Generator</h3>
+                <div class="tool-description">Create templates for engaging with your audience</div>
+                <div class="tool-input">
+                    <select id="comment-type">
+                        <option value="thanks">Thank You Messages</option>
+                        <option value="questions">Engagement Questions</option>
+                        <option value="feedback">Feedback Requests</option>
+                    </select>
+                    <button id="generate-comments" class="action-btn">Generate Templates</button>
+                </div>
+                <div id="comment-templates" class="comment-templates"></div>
+                <div class="tool-input" style="margin-top: 10px;">
+                    <button id="copy-comment" class="action-btn">Copy Selected Template</button>
+                </div>
+            </div>
+            
+            <!-- Other tools will be added by JavaScript -->
         </section>
         
         <section class="games">
@@ -254,13 +380,267 @@
             <!-- Games will be added by JavaScript -->
         </section>
         
-        <!-- Extras section will be added by JavaScript -->
+        <section class="extras">
+            <h2>⭐ Extras</h2>
+            <p>Additional tools for streamers and content creators</p>
+            
+            <!-- Added Chroma Key Background Tool -->
+            <div class="tool-card">
+                <h3>Chroma Key Background Tool</h3>
+                <div class="tool-description">Preview your videos with virtual backgrounds</div>
+                <div class="tool-input">
+                    <select id="virtual-background">
+                        <option value="city">City Skyline</option>
+                        <option value="space">Outer Space</option>
+                        <option value="forest">Forest Scene</option>
+                        <option value="abstract">Abstract Pattern</option>
+                    </select>
+                    <input type="color" id="chroma-color" value="#00ff00">
+                    <button id="update-background" class="action-btn">Update Preview</button>
+                </div>
+                <div class="chroma-preview">
+                    <div id="background-preview" class="preview-content">Your Content Here</div>
+                </div>
+            </div>
+            
+            <!-- Added Stream Sound Effects Library -->
+            <div class="tool-card">
+                <h3>Stream Sound Effects Library</h3>
+                <div class="tool-description">Quick access to common sound effects for your streams</div>
+                <div class="sound-library">
+                    <div class="sound-effect" data-sound="applause">👏 Applause</div>
+                    <div class="sound-effect" data-sound="drumroll">🥁 Drumroll</div>
+                    <div class="sound-effect" data-sound="success">🎉 Success</div>
+                    <div class="sound-effect" data-sound="fail">❌ Fail</div>
+                    <div class="sound-effect" data-sound="notification">🔔 Notification</div>
+                    <div class="sound-effect" data-sound="laugh">😂 Laugh Track</div>
+                </div>
+                <div id="sound-status" class="result-message"></div>
+            </div>
+            
+            <!-- Other extras will be added by JavaScript -->
+        </section>
     </main>
     
     <footer>
         <p>&copy; 2025 Content Creator Hub | All tools are for demonstration purposes only</p>
     </footer>
     
+    <script>
+        // Additional JavaScript for the new tools
+        document.addEventListener("DOMContentLoaded", function() {
+            // Hashtag Generator
+            document.getElementById('generate-hashtags').addEventListener('click', function() {
+                const topic = document.getElementById('video-topic').value || "content creation";
+                const category = document.getElementById('video-category').value;
+                const hashtagsContainer = document.getElementById('hashtags-result');
+                
+                // Clear previous results
+                hashtagsContainer.innerHTML = '';
+                
+                // Generate hashtags based on topic and category
+                const hashtags = generateHashtags(topic, category);
+                
+                // Display hashtags
+                hashtags.forEach(tag => {
+                    const tagElement = document.createElement('span');
+                    tagElement.className = 'hashtag-item';
+                    tagElement.textContent = tag;
+                    tagElement.addEventListener('click', function() {
+                        navigator.clipboard.writeText(tag)
+                            .then(() => {
+                                showMessage(`Copied ${tag} to clipboard!`);
+                            })
+                            .catch(err => {
+                                showMessage('Failed to copy text');
+                            });
+                    });
+                    hashtagsContainer.appendChild(tagElement);
+                });
+                
+                showMessage(`Generated hashtags for "${topic}" in ${category} category`);
+            });
+            
+            function generateHashtags(topic, category) {
+                // Predefined hashtags based on category
+                const categoryTags = {
+                    'gaming': ['#Gaming', '#GamersOnYouTube', '#GamerLife', '#GamePlay', '#StreamerLife'],
+                    'tech': ['#TechTips', '#TechReview', '#Technology', '#TechTutorial', '#TechNews'],
+                    'beauty': ['#BeautyTips', '#LifestyleVlog', '#BeautyGuru', '#MakeupTutorial', '#GRWM'],
+                    'cooking': ['#RecipeShare', '#CookingTips', '#FoodVlog', '#Foodie', '#HomeCooking'],
+                    'education': ['#LearnWithMe', '#StudyTips', '#EducationalContent', '#Tutorial', '#HowTo']
+                };
+                
+                // Common YouTube tags
+                const commonTags = ['#YouTubeCreator', '#ContentCreator', '#Subscribe', '#NewVideo', '#YouTube'];
+                
+                // Generate topic specific tags
+                const words = topic.split(' ');
+                const topicTags = [];
+                
+                // Single word tags
+                words.forEach(word => {
+                    if (word.length > 3) {
+                        topicTags.push(`#${word.charAt(0).toUpperCase() + word.slice(1)}`);
+                    }
+                });
+                
+                // Combined word tags
+                if (words.length > 1) {
+                    const combined = words.map(w => w.charAt(0).toUpperCase() + w.slice(1)).join('');
+                    topicTags.push(`#${combined}`);
+                }
+                
+                // Mix all tags and remove duplicates
+                const allTags = [...topicTags, ...categoryTags[category], ...commonTags];
+                const uniqueTags = [...new Set(allTags)];
+                
+                // Return a subset of tags (10-12 hashtags is recommended for YouTube)
+                return uniqueTags.slice(0, 10);
+            }
+            
+            // Comment Template Generator
+            document.getElementById('generate-comments').addEventListener('click', function() {
+                const commentType = document.getElementById('comment-type').value;
+                const templatesContainer = document.getElementById('comment-templates');
+                
+                // Clear previous results
+                templatesContainer.innerHTML = '';
+                
+                // Generate templates based on type
+                const templates = generateCommentTemplates(commentType);
+                
+                // Display templates
+                templates.forEach(template => {
+                    const templateElement = document.createElement('div');
+                    templateElement.className = 'template-item';
+                    templateElement.textContent = template;
+                    templateElement.addEventListener('click', function() {
+                        // Highlight selected template
+                        document.querySelectorAll('.template-item').forEach(item => {
+                            item.style.backgroundColor = '';
+                        });
+                        this.style.backgroundColor = '#555';
+                        this.dataset.selected = 'true';
+                    });
+                    templatesContainer.appendChild(templateElement);
+                });
+                
+                showMessage(`Generated ${commentType} comment templates`);
+            });
+            
+            document.getElementById('copy-comment').addEventListener('click', function() {
+                const selectedTemplate = document.querySelector('.template-item[data-selected="true"]');
+                
+                if (!selectedTemplate) {
+                    showMessage('Please select a template first');
+                    return;
+                }
+                
+                navigator.clipboard.writeText(selectedTemplate.textContent)
+                    .then(() => {
+                        showMessage('Template copied to clipboard!');
+                    })
+                    .catch(err => {
+                        showMessage('Failed to copy text');
+                    });
+            });
+            
+            function generateCommentTemplates(type) {
+                const templates = {
+                    'thanks': [
+                        "Thank you so much for watching! I really appreciate your support! 🙏",
+                        "Thanks for checking out my video! Let me know what you think in the comments below.",
+                        "I'm so grateful for all of you who watched this video. Your support means everything to me! ❤️",
+                        "Thank you for watching! If you enjoyed this content, please consider subscribing for more videos like this.",
+                        "Thanks for watching! I'd love to hear your thoughts and feedback in the comments."
+                    ],
+                    'questions': [
+                        "What do you think about this topic? I'd love to hear your perspective!",
+                        "Have you tried this method before? What was your experience like?",
+                        "What would you like to see in my next video? Drop your suggestions below!",
+                        "What's your biggest challenge when it comes to [topic]? Let me know in the comments!",
+                        "If you could change one thing about [topic], what would it be and why?"
+                    ],
+                    'feedback': [
+                        "How was the pacing of this video? Too fast, too slow, or just right?",
+                        "Was this tutorial helpful? Let me know if you'd like me to go into more detail on any part.",
+                        "Is there anything I missed or could explain better? Your feedback helps me improve!",
+                        "What topics would you like me to cover in future videos? I'm always looking for new ideas!",
+                        "Did you find this content valuable? Please let me know what you liked or what could be improved!"
+                    ]
+                };
+                
+                return templates[type];
+            }
+            
+            // Chroma Key Background Tool
+            document.getElementById('update-background').addEventListener('click', function() {
+                const background = document.getElementById('virtual-background').value;
+                const chromaColor = document.getElementById('chroma-color').value;
+                const previewElement = document.getElementById('background-preview');
+                
+                // Update background image based on selection
+                switch(background) {
+                    case 'city':
+                        previewElement.style.backgroundImage = "url('/api/placeholder/320/180?text=City')";
+                        break;
+                    case 'space':
+                        previewElement.style.backgroundImage = "url('/api/placeholder/320/180?text=Space')";
+                        break;
+                    case 'forest':
+                        previewElement.style.backgroundImage = "url('/api/placeholder/320/180?text=Forest')";
+                        break;
+                    case 'abstract':
+                        previewElement.style.backgroundImage = "url('/api/placeholder/320/180?text=Abstract')";
+                        break;
+                }
+                
+                // Update chroma color
+                document.querySelector('.chroma-preview').style.backgroundColor = chromaColor;
+                
+                showMessage(`Updated background to ${background} with chroma key color ${chromaColor}`);
+            });
+            
+            // Sound Effects Library
+            document.querySelectorAll('.sound-effect').forEach(effect => {
+                effect.addEventListener('click', function() {
+                    const sound = this.dataset.sound;
+                    const statusElement = document.getElementById('sound-status');
+                    
+                    // In a real application, this would play the actual sound
+                    statusElement.textContent = `Playing ${sound} sound effect...`;
+                    statusElement.style.color = '#4CAF50';
+                    
+                    // Simulate sound playing
+                    setTimeout(() => {
+                        statusElement.textContent = `${sound} sound effect played successfully!`;
+                        showMessage(`${sound} sound effect played!`);
+                    }, 1000);
+                });
+            });
+            
+            // Toast message function (copied from your original script)
+            function showMessage(message) {
+                // Create or get toast element
+                let toast = document.getElementById('toast-message');
+                if (!toast) {
+                    toast = document.createElement('div');
+                    toast.id = 'toast-message';
+                    document.body.appendChild(toast);
+                }
+                
+                // Set message and show toast
+                toast.textContent = message;
+                toast.className = 'show';
+                
+                // Hide after 3 seconds
+                setTimeout(function() {
+                    toast.className = toast.className.replace("show", "");
+                }, 3000);
+            }
+        });
+    </script>
     <script src="script.js"></script>
 </body>
 </html>
