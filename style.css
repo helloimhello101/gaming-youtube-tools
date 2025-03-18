@@ -89,6 +89,43 @@ footer {
     margin-top: 0;
 }
 
+/* Description styles */
+.tool-description, .game-description {
+    font-style: italic;
+    margin-bottom: 15px;
+    color: #aaa;
+}
+
+/* Action buttons */
+.action-btn {
+    padding: 10px 20px;
+    background-color: #00bcd4;
+    color: black;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.action-btn:hover {
+    background-color: #008c9e;
+    transform: scale(1.05);
+}
+
+.action-btn:active {
+    transform: scale(0.95);
+}
+
+/* Result messages */
+.result-message {
+    margin-top: 15px;
+    font-size: 16px;
+    padding: 10px;
+    background-color: #333;
+    border-radius: 4px;
+}
+
 /* Calculator Styling */
 .calculator {
     max-width: 400px;
@@ -117,27 +154,31 @@ footer {
     color: white;
 }
 
-#calculate-btn {
-    margin: 15px 0;
-    padding: 10px 20px;
-    background-color: #00bcd4;
-    color: black;
+/* Tool inputs */
+.tool-input {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 15px;
+    justify-content: center;
+}
+
+.tool-input input[type="text"] {
+    flex-grow: 1;
+    padding: 8px;
+    border-radius: 4px;
     border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-weight: bold;
-}
-
-#calculate-btn:hover {
-    background-color: #008c9e;
-}
-
-#duration-result {
-    margin-top: 15px;
-    font-size: 18px;
-    padding: 10px;
     background-color: #333;
+    color: white;
+    min-width: 200px;
+}
+
+.tool-input select {
+    padding: 8px;
     border-radius: 4px;
+    border: none;
+    background-color: #333;
+    color: white;
 }
 
 /* Color Game Styling */
@@ -173,86 +214,17 @@ footer {
     transform: scale(1.1);
 }
 
-#game-result {
-    margin: 15px 0;
+/* Rock Paper Scissors Game */
+.rps-game {
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.rps-score {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 15px;
     font-size: 18px;
 }
 
-#new-game-btn {
-    padding: 10px 20px;
-    background-color: #00bcd4;
-    color: black;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-weight: bold;
-    margin-top: 10px;
-}
-
-#new-game-btn:hover {
-    background-color: #008c9e;
-}
-
-/* Timer Styling */
-.countdown-timer {
-    max-width: 400px;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #2d2d2d;
-    border-radius: 8px;
-}
-
-.timer-controls {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin-bottom: 20px;
-}
-
-#timer-minutes {
-    width: 60px;
-    padding: 8px;
-    border-radius: 4px;
-    border: none;
-    background-color: #333;
-    color: white;
-    text-align: center;
-}
-
-#start-timer, #reset-timer {
-    padding: 8px 15px;
-    background-color: #00bcd4;
-    color: black;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-weight: bold;
-}
-
-#start-timer:hover, #reset-timer:hover {
-    background-color: #008c9e;
-}
-
-#timer-display {
-    font-size: 48px;
-    font-weight: bold;
-    margin-top: 20px;
-    font-family: 'Courier New', monospace;
-}
-
-/* Responsive design */
-@media (max-width: 768px) {
-    nav ul li {
-        margin: 0 8px;
-    }
-    
-    nav ul li a {
-        font-size: 16px;
-    }
-    
-    .tool-card, .game-card, .countdown-timer {
-        max-width: 100%;
-    }
-}
+.rps-options {
